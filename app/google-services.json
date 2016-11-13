@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "479718165767",
+    "firebase_url": "https://tankingapp.firebaseio.com",
+    "project_id": "tankingapp",
+    "storage_bucket": "tankingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479718165767:android:7755ef649690badd",
+        "android_client_info": {
+          "package_name": "be.ehb.digx.tankingpoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479718165767-2e1e57sm3lfanictui8mj0oau76iimdp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-prD9k9gppJ7LCjtBGXcnhoKVDsFlkqI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479718165767:android:dd4e65f816cd653f",
+        "android_client_info": {
+          "package_name": "be.ehb.digx.refuel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479718165767-2e1e57sm3lfanictui8mj0oau76iimdp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-prD9k9gppJ7LCjtBGXcnhoKVDsFlkqI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
