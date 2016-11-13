@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by richsoft on 13/11/2016.
+ * Keeps data about the user that is logged in
  */
 
 public class User {

@@ -6,10 +6,16 @@ import be.ehb.digx.refuel.domain.model.User;
 
 /**
  * Created by richsoft on 13/11/2016.
+ * Adapter for the User class
  */
 
 public class UserAdapter {
 
+    /**
+     * Adapts FirebaseUser to User
+     * @param firebaseUser
+     * @return
+     */
     public static User adapt (FirebaseUser firebaseUser){
         User user = new User();
         user.setAnonymous(firebaseUser.isAnonymous());

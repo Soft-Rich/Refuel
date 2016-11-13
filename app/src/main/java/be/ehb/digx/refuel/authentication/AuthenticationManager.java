@@ -18,7 +18,7 @@ import be.ehb.digx.refuel.login.domain.model.Login;
 /**
  * Created by richsoft on 13/11/2016.
  *
- * Manage the authentication for the Refuel application
+ * Manage the actions for authentication in the Refuel application
  */
 
 public class AuthenticationManager {
@@ -68,7 +68,6 @@ public class AuthenticationManager {
      * Attempt to login the user with email and password
      * @param login
      */
-
     public void signIn(Login login){
         Log.i(TAG, "signIn("+login.getEmail()+",********)");
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -88,10 +87,16 @@ public class AuthenticationManager {
 
     }
 
+    /**
+     * Start observing authentication state changes
+     */
     public void start(){
         firebaseAuth.addAuthStateListener(authStateListener);
     }
 
+    /**
+     * Stop observing authentication state changes
+     */
     public void stop(){
         firebaseAuth.removeAuthStateListener(authStateListener);
     }
