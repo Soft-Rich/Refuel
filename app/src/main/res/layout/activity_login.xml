@@ -1,10 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="login"
-            type="be.ehb.digx.refuel.login.domain.model.Login"/>
+            type="be.ehb.digx.refuel.login.view.model.Login"/>
         <variable
             name="presenter"
             type="be.ehb.digx.refuel.login.LoginPresenter" />
@@ -22,7 +23,7 @@
 
     <!-- Login progress -->
     <ProgressBar
-        android:id="@+id/lv_login_progress"
+        android:id="@+id/lv_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +68,6 @@
                     android:text="@{login.password}"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1" />
 

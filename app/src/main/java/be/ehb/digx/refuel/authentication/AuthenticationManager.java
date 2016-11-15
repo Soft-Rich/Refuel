@@ -13,7 +13,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import be.ehb.digx.refuel.authentication.model.adapter.UserAdapter;
 import be.ehb.digx.refuel.domain.model.User;
-import be.ehb.digx.refuel.login.domain.model.Login;
+import be.ehb.digx.refuel.login.view.model.Login;
+
 
 /**
  * Created by richsoft on 13/11/2016.

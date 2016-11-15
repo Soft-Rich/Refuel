@@ -3,10 +3,11 @@ package be.ehb.digx.refuel.login;
 import android.app.Activity;
 import android.util.Log;
 
+import be.ehb.digx.refuel.R;
 import be.ehb.digx.refuel.authentication.AuthenticationException;
 import be.ehb.digx.refuel.authentication.AuthenticationManager;
 import be.ehb.digx.refuel.domain.model.User;
-import be.ehb.digx.refuel.login.domain.model.Login;
+import be.ehb.digx.refuel.login.view.model.Login;
 
 /**
  * Created by richsoft on 13/11/2016.
@@ -33,8 +34,39 @@ public class LoginPresenter implements LoginContract.Presenter, AuthenticationMa
     @Override
     public void attemptLogin(Login login) {
         Log.d(TAG, "attemptLogin: user = "+login.getEmail());
-        authenticationManager = new AuthenticationManager(activity, this);
-        authenticationManager.signIn(login);
+        view.showProgressBar();
+        if (loginValid(login)) {
+            Log.d(TAG, "attemptLogin: user = isValid");
+            authenticationManager = new AuthenticationManager(activity, this);
+            authenticationManager.signIn(login);
+            return;
+        }
+        Log.w(TAG, "attemptLogin: user = isInvalid");
+        view.hideProgressBar();
+    }
+
+    private boolean loginValid(Login login){
+        view.doResetInputError();
+        if (login.getEmail() == null || login.getEmail().length() == 0){
+            view.showEmailError(activity.getResources().getString(R.string.error_field_required));
+            return false;
+        }
+
+        if (login.getPassword() == null || login.getPassword().length() == 0){
+            view.showPasswordError(activity.getResources().getString(R.string.error_field_required));
+            return false;
+        }
+
+        if (!login.isEmailValid()){
+            view.showEmailError(activity.getResources().getString(R.string.error_invalid_email));
+            return false;
+        }
+
+        if (!login.isPasswordValid()){
+            view.showPasswordError(activity.getResources().getString(R.string.error_invalid_password));
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -53,6 +85,7 @@ public class LoginPresenter implements LoginContract.Presenter, AuthenticationMa
     @Override
     public void onAuthenticationSuccessful(User user) {
         Log.d(TAG, "onAuthenticationSuccessful: user = "+user.getDisplayName());
+        view.hideProgressBar();
         view.showLogInSuccessful(user);
     }
 
@@ -63,6 +96,7 @@ public class LoginPresenter implements LoginContract.Presenter, AuthenticationMa
     @Override
     public void onAuthenticationFailed(AuthenticationException authenticationException) {
         Log.d(TAG, "onAuthenticationFailed: "+authenticationException.getMessage());
+        view.hideProgressBar();
         view.showLoginFailed(authenticationException);
     }
 }
