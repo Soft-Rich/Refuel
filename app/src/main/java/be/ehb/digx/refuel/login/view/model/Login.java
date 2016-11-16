@@ -5,7 +5,8 @@ import android.databinding.Bindable;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import com.android.databinding.library.baseAdapters.BR;
+import be.ehb.digx.refuel.BR;
+
 
 /**
  * Created by richsoft on 15/11/2016.

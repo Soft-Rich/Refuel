@@ -1,5 +1,6 @@
 package be.ehb.digx.refuel.login;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import be.ehb.digx.refuel.authentication.AuthenticationException;
 import be.ehb.digx.refuel.databinding.ActivityLoginBinding;
 import be.ehb.digx.refuel.domain.model.User;
 import be.ehb.digx.refuel.login.view.model.Login;
+import be.ehb.digx.refuel.vehicles.VehiclesActivity;
 
 
 /**
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void showLogInSuccessful(User user) {
         Toast.makeText(this, getString(R.string.label_user)+ (user.getDisplayName() != null? user.getDisplayName() : "Unknown")+" "+getString(R.string.successful_login), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, VehiclesActivity.class));
     }
 
     @Override
