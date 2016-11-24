@@ -3,6 +3,7 @@ package be.ehb.digx.refuel.util;
 
 import com.android.annotations.NonNull;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,5 +57,28 @@ public class DateTime {
         SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT);
         String timeText = dateFormat.format(date);
         return timeText;
+    }
+
+    public static Date getDateFromString(String date){
+        DateFormat format = new SimpleDateFormat(DATE_FORMAT);
+        Date resultDate = null;
+        try {
+            resultDate = format.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return resultDate;
+
+    }
+
+    public static Date getTimeFromString(String time){
+        DateFormat format = new SimpleDateFormat(TIME_FORMAT);
+        Date resultTime = null;
+        try {
+            resultTime = format.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return resultTime;
     }
 }

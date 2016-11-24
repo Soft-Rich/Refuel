@@ -24,10 +24,10 @@ public class AddEditRefuelPresenter implements AddEditRefuelContract.Presenter, 
     @Override
     public void addRefueling(Refueling refueling) {
         Log.i(TAG, "addRefueling: ");
-        addEditRefuelView.showProgress();
         addEditRefuelView.doResetInputError();
         RefuelingValidator refuelingValidator = new RefuelingValidator();
         if (refuelingValidator.validate(refueling)){
+            addEditRefuelView.showProgress();
             RefuelingRemoteDataSource.getInstance().add(RefuelingAdapter.adaptFromUi(refueling), this);
         }
     }

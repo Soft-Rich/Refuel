@@ -2,6 +2,8 @@ package be.ehb.digx.refuel.addeditrefueling;
 
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -10,7 +12,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.sql.Date;
+import java.util.Calendar;
 
 import be.ehb.digx.refuel.R;
 import be.ehb.digx.refuel.RefuelApplication;
@@ -57,15 +64,10 @@ public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelC
         refueling.setTime(DateTime.getCurrentTime());
         refueling.setDate(DateTime.getCurrentDate());
 
-
-        layoutAddeditRefuelBinding.aevFuelType.addTextChangedListener(refueling.onFuelTypeChanged);
-        layoutAddeditRefuelBinding.aevFueledVolume.addTextChangedListener(refueling.onFueledVolumeChanged);
-        layoutAddeditRefuelBinding.aevMileAge.addTextChangedListener(refueling.onMileAgeChanged);
-        layoutAddeditRefuelBinding.aevLiterPrice.addTextChangedListener(refueling.onLiterPriceChanged);
-
         layoutAddeditRefuelBinding.setRefueling(refueling);
         addEditRefuelPresenter = new AddEditRefuelPresenter(this);
-        layoutAddeditRefuelBinding.setHandler(addEditRefuelPresenter);
+        layoutAddeditRefuelBinding.setPresenter(addEditRefuelPresenter);
+        layoutAddeditRefuelBinding.setHandler(this);
 
         EventBus.getDefault().register(this);
         return rootview;
@@ -191,5 +193,45 @@ public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelC
 
     public void onEvent(InvalidVehicleIdEvent event){
         showVehicleIdError(event.getMessage());
+    }
+
+    public void onDateClicked(String date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(DateTime.getDateFromString(date));
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        String date = String.valueOf(dayOfMonth)+"/"+String.valueOf(monthOfYear)+"/"+String.valueOf(year);
+                        layoutAddeditRefuelBinding.aevDate.setText(date);
+                    }
+                }, year, month, day);
+        datePickerDialog.show();
+    }
+
+    public void onTimeClicked(String time){
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(DateTime.getTimeFromString(time));
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+
+                        String time = String.valueOf(hourOfDay)+":"+String.valueOf(minute);
+                        layoutAddeditRefuelBinding.aevTime.setText(time);
+                    }
+                }, hour, minute, false);
+        timePickerDialog.show();
     }
 }

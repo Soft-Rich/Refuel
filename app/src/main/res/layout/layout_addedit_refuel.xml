@@ -7,8 +7,12 @@
             type="be.ehb.digx.refuel.addeditrefueling.view.model.Refueling"/>
 
         <variable
-            name="handler"
+            name="presenter"
             type="be.ehb.digx.refuel.addeditrefueling.AddEditRefuelPresenter"/>
+
+        <variable
+            name="handler"
+            type="be.ehb.digx.refuel.addeditrefueling.AddEditRefuelingFragment"/>
 
     </data>
 
@@ -45,6 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/aev_date"
+                    android:onClick="@{() -> handler.onDateClicked(refueling.date)}"
                     android:text="@={refueling.date}" />
 
                 <TextView
@@ -52,8 +57,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:id="@+id/aev_time"
+                    android:onClick="@{() -> handler.onTimeClicked(refueling.time)}"
                     android:text="@={refueling.time}" />
-                </LinearLayout>Ò
+                </LinearLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -65,6 +71,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/action_fuelType"
                         android:text="@={refueling.fuelType}"
+                        android:visibility="gone"
                         android:imeOptions="actionUnspecified"
                         android:inputType="text"
                         android:maxLines="1" />
@@ -138,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/aev_bttnSave"
-                    android:onClick="@{() ->  handler.addRefueling(refueling)}"
+                    android:onClick="@{() ->  presenter.addRefueling(refueling)}"
                     android:text="@string/action_save"/>
             </LinearLayout>
         </ScrollView>

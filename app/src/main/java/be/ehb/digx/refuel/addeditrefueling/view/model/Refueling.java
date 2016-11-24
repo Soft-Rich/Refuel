@@ -1,9 +1,6 @@
 package be.ehb.digx.refuel.addeditrefueling.view.model;
 
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.text.Editable;
-import android.text.TextWatcher;
 
 
 /**
@@ -43,7 +40,6 @@ public class Refueling extends BaseObservable{
         this.external = external;
     }
 
-
     public String getFueledVolume() {
         return fueledVolume;
     }
@@ -51,26 +47,6 @@ public class Refueling extends BaseObservable{
     public void setFueledVolume(String fueledVolume) {
         this.fueledVolume = fueledVolume;
     }
-
-    @Bindable
-    public TextWatcher onFueledVolumeChanged = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            setFueledVolume(charSequence.toString());
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    };
-
-
 
     public String getFuelType() {
         return fuelType;
@@ -80,26 +56,6 @@ public class Refueling extends BaseObservable{
         this.fuelType = fuelType;
     }
 
-    @Bindable
-    public TextWatcher onFuelTypeChanged = new TextWatcher() {
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            setFuelType(charSequence.toString());
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    };
-
     public String getLiterPrice() {
         return literPrice;
     }
@@ -108,24 +64,6 @@ public class Refueling extends BaseObservable{
         this.literPrice = literPrice;
     }
 
-    @Bindable
-    public TextWatcher onLiterPriceChanged = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            setLiterPrice(charSequence.toString());
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    };
-
     public String getMileAge() {
         return mileAge;
     }
@@ -133,24 +71,6 @@ public class Refueling extends BaseObservable{
     public void setMileAge(String mileAge) {
         this.mileAge = mileAge;
     }
-
-    @Bindable
-    public TextWatcher onMileAgeChanged = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            setMileAge(charSequence.toString());
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    };
 
     public String getTime() {
         return time;
