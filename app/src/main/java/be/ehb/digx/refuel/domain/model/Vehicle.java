@@ -3,11 +3,13 @@ package be.ehb.digx.refuel.domain.model;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
+import java.io.Serializable;
+
 /**
  * Created by richsoft on 16/11/2016.
  */
 
-public class Vehicle extends BaseObservable {
+public class Vehicle extends BaseObservable implements Serializable {
 
     private String carId;
     private	String numberPlate;
@@ -19,13 +21,13 @@ public class Vehicle extends BaseObservable {
     private	String photoUrl;
     private	String typeOfUse;
     private	String yearOfConstruction;
-    private	Enum model;
+    private	String model;
     private String horsePower;
 
     public Vehicle() {
     }
 
-    public Vehicle(String carId, String numberPlate, String fuelType, String engine, String doors, String manufacturer, String color, String photoUrl, String typeOfUse, String yearOfConstruction, Enum model, String horsePower) {
+    public Vehicle(String carId, String numberPlate, String fuelType, String engine, String doors, String manufacturer, String color, String photoUrl, String typeOfUse, String yearOfConstruction, String model, String horsePower) {
         this.carId = carId;
         this.numberPlate = numberPlate;
         this.fuelType = fuelType;
@@ -131,11 +133,11 @@ public class Vehicle extends BaseObservable {
     }
 
     @Bindable
-    public Enum getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(Enum model) {
+    public void setModel(String model) {
         this.model = model;
     }
 
@@ -146,5 +148,23 @@ public class Vehicle extends BaseObservable {
 
     public void setHorsePower(String horsePower) {
         this.horsePower = horsePower;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "carId='" + carId + '\'' +
+                ", numberPlate='" + numberPlate + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", engine='" + engine + '\'' +
+                ", doors='" + doors + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", color='" + color + '\'' +
+                ", photoUrl='" + photoUrl + '\'' +
+                ", typeOfUse='" + typeOfUse + '\'' +
+                ", yearOfConstruction='" + yearOfConstruction + '\'' +
+                ", model='" + model + '\'' +
+                ", horsePower='" + horsePower + '\'' +
+                '}';
     }
 }

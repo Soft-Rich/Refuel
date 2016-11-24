@@ -5,12 +5,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import be.ehb.digx.refuel.R;
 import be.ehb.digx.refuel.authentication.AuthenticationException;
 import be.ehb.digx.refuel.databinding.ActivityLoginBinding;
+import be.ehb.digx.refuel.dialog.ProgressDialogFragment;
 import be.ehb.digx.refuel.domain.model.User;
 import be.ehb.digx.refuel.login.view.model.Login;
 import be.ehb.digx.refuel.vehicles.VehiclesActivity;
@@ -23,6 +23,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private static final String TAG = "LoginActivity";
 
+
+    private ProgressDialogFragment progressDialogFragment;
     private LoginPresenter loginPresenter;
     private Login login;
     private ActivityLoginBinding activityLoginBinding;
@@ -30,7 +32,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        progressDialogFragment = new ProgressDialogFragment();
+        progressDialogFragment.setContext(this);
         //Databinding
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginPresenter = new LoginPresenter(this, this);
@@ -73,12 +76,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showProgressBar() {
-        activityLoginBinding.lvProgress.setVisibility(View.VISIBLE);
+        progressDialogFragment.show(getFragmentManager(), TAG);
     }
 
     @Override
     public void hideProgressBar() {
-        activityLoginBinding.lvProgress.setVisibility(View.INVISIBLE);
+        progressDialogFragment.dismiss();
     }
 
     @Override

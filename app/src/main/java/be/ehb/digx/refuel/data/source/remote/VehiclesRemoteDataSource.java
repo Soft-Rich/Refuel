@@ -49,8 +49,10 @@ public class VehiclesRemoteDataSource implements VehiclesDataSource{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<Vehicle> vehiclesList = new ArrayList<>();
                 Log.i(TAG, "getAllVehicles() - onDataChange()");
+                Log.i(TAG, "dataSnapshot: "+dataSnapshot.toString());
                 for (DataSnapshot vehicleSnapshot:dataSnapshot.getChildren()){
                     Vehicle vehicle = vehicleSnapshot.getValue(Vehicle.class);
+                    vehicle.setCarId(vehicleSnapshot.getKey());
                     vehiclesList.add(vehicle);
                 }
                 vehilesCallback.onVehiclesLoaded(vehiclesList);

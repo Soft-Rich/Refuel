@@ -27,6 +27,8 @@ public class LoginPresenter implements LoginContract.Presenter, AuthenticationMa
         this.view = view;
     }
 
+    public void test(){}
+
     /**
      * Attempt to login the user based on email and password
      * @param login

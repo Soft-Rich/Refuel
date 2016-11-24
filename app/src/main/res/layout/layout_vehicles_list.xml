@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v7.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,4 +11,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="be.ehb.digx.refuel.vehicles.VehicleFragment"
-    tools:listitem="@layout/layout_vehicle" />
+    tools:listitem="@layout/layout_vehicle_item" />

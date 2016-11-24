@@ -15,6 +15,34 @@
         completions."
     </string>
 
+    <!--Strings related to add edit tankingen -->
+    <string name="action_timestamp">Timestamp</string>
+    <string name="action_fuelType">Fuel type</string>
+    <string name="action_fueledVolume">Fueled volume</string>
+    <string name="action_literPcice">Liter price</string>
+    <string name="action_mileAge">Mileage</string>
+    <string name="title_refueling">Refueling</string>
+    <string name="dialog_refueling_positive">Save</string>
+    <string name="dialog_refueling_negative">Cancel</string>
+
+    <!-- Strings related to add refueling -->
+    <string name="menu_actions_vehicles_add_refueling">Add refueling</string>
+    <string name="menu_actions_vehicles_show_refueling">Show refuelings</string>
+
     <string name="label_user">User: </string>
     <string name="successful_login">Successfully logged in.</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_save">Save</string>
+    <string name="result_refueling_saved_succesful">Refueling saved succesfuly</string>
+    <string name="action_external">External</string>
+    <string name="label_error">Error</string>
+    <string name="error_number_invalid">Invalid number</string>
+    <string name="error_number_must_between">Number must be between:</string>
+    <string name="label_and">and</string>
+    <string name="title_activity_vehicles">Vehicles</string>
+    <string name="title_activity_refueling">Refueling</string>
 </resources>

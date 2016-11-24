@@ -5,10 +5,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import be.ehb.digx.refuel.R;
@@ -20,9 +21,9 @@ public class VehicleFragment extends Fragment implements VehiclesContract.View{
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     VehicleRecyclerViewAdapter vehicleRecyclerViewAdapter;
-    List<Vehicle> vehicles;
     VehiclesPresenter vehiclesPresenter;
     ProgressBar progressBar;
+
 
 
     @Override
@@ -30,10 +31,16 @@ public class VehicleFragment extends Fragment implements VehiclesContract.View{
         super.onCreate(savedInstanceState);
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.layout_vehicles_list, container, false);
+        return rootView;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        vehicles = new ArrayList<>();
         vehiclesPresenter = new VehiclesPresenter(this);
         vehiclesPresenter.getVehicles();
 
@@ -47,13 +54,13 @@ public class VehicleFragment extends Fragment implements VehiclesContract.View{
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        vehicleRecyclerViewAdapter = new VehicleRecyclerViewAdapter(vehicles);
+        vehicleRecyclerViewAdapter = new VehicleRecyclerViewAdapter(this.getContext());
         recyclerView.setAdapter(vehicleRecyclerViewAdapter);
     }
 
     @Override
     public void showVehicles(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
+        vehicleRecyclerViewAdapter.setVehicles(vehicles);
         vehicleRecyclerViewAdapter.notifyDataSetChanged();
     }
 
