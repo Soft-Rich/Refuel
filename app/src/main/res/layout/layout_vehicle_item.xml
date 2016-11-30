@@ -28,7 +28,7 @@
                     android:id="@+id/vi_numberplate"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorPrimaryDark"
                     android:textColor="@android:color/white"
                     android:text="@{vehicle.numberPlate}"
                     android:textAppearance="?attr/textAppearanceListItem"

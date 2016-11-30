@@ -45,4 +45,6 @@
     <string name="label_and">and</string>
     <string name="title_activity_vehicles">Vehicles</string>
     <string name="title_activity_refueling">Refueling</string>
+    <string name="label_mileage_unit_km">km</string>
+    <string name="error_missing_vehicleId">Missing vehicleId</string>
 </resources>

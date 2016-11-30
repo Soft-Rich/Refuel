@@ -2,8 +2,8 @@ package be.ehb.digx.refuel.addeditrefueling;
 
 import android.util.Log;
 
-import be.ehb.digx.refuel.addeditrefueling.view.model.Refueling;
 import be.ehb.digx.refuel.addeditrefueling.view.model.RefuelingAdapter;
+import be.ehb.digx.refuel.addeditrefueling.view.model.RefuelingUI;
 import be.ehb.digx.refuel.addeditrefueling.view.model.RefuelingValidator;
 import be.ehb.digx.refuel.data.source.RefuelDataSourceException;
 import be.ehb.digx.refuel.data.source.RefuelingDataSource;
@@ -22,13 +22,14 @@ public class AddEditRefuelPresenter implements AddEditRefuelContract.Presenter, 
     }
 
     @Override
-    public void addRefueling(Refueling refueling) {
+    public void addRefueling(RefuelingUI refueling) {
         Log.i(TAG, "addRefueling: ");
         addEditRefuelView.doResetInputError();
         RefuelingValidator refuelingValidator = new RefuelingValidator();
+        RefuelingAdapter refuelingAdapter = new RefuelingAdapter();
         if (refuelingValidator.validate(refueling)){
             addEditRefuelView.showProgress();
-            RefuelingRemoteDataSource.getInstance().add(RefuelingAdapter.adaptFromUi(refueling), this);
+            RefuelingRemoteDataSource.getInstance().add(refuelingAdapter.adaptFromUi(refueling), this);
         }
     }
 

@@ -7,8 +7,9 @@ import android.databinding.BaseObservable;
  * Created by richsoft on 17/11/2016.
  */
 
-public class Refueling extends BaseObservable{
+public class RefuelingUI extends BaseObservable{
 
+    private Long id;
     private String time;
     private String date;
     private String vehicleId;
@@ -18,10 +19,11 @@ public class Refueling extends BaseObservable{
     private String mileAge;
     private boolean external;
 
-    public Refueling() {
+    public RefuelingUI() {
     }
 
-    public Refueling(boolean external, String fueledVolume, String fuelType, String literPrice, String mileAge, String time, String date, String vehicleId) {
+    public RefuelingUI(Long id, boolean external, String fueledVolume, String fuelType, String literPrice, String mileAge, String time, String date, String vehicleId) {
+        this.id = id;
         this.external = external;
         this.fueledVolume = fueledVolume;
         this.fuelType = fuelType;
@@ -30,6 +32,14 @@ public class Refueling extends BaseObservable{
         this.time = time;
         this.date = date;
         this.vehicleId = vehicleId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean getExternal() {

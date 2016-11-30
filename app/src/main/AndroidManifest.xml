@@ -19,15 +19,17 @@
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".vehicles.VehiclesActivity"
-            android:label="@string/title_activity_vehicles"/>
-
-        <activity android:name=".addeditrefueling.AddEditRefuelActivity"
-            android:label="@string/title_activity_refueling"/>
+        <activity
+            android:name=".vehicles.VehiclesActivity"
+            android:label="@string/title_activity_vehicles" />
+        <activity
+            android:name=".addeditrefueling.AddEditRefuelActivity"
+            android:label="@string/title_activity_refueling" />
+        <activity android:name=".refuelings.RefuelingsActivity"></activity>
     </application>
 
 </manifest>

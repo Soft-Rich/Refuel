@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void showLogInSuccessful(User user) {
         Toast.makeText(this, getString(R.string.label_user)+ (user.getDisplayName() != null? user.getDisplayName() : "Unknown")+" "+getString(R.string.successful_login), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, VehiclesActivity.class));
+        this.finish();
     }
 
     @Override

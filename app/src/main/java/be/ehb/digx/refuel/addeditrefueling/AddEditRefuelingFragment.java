@@ -16,7 +16,6 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 import be.ehb.digx.refuel.R;
@@ -28,7 +27,7 @@ import be.ehb.digx.refuel.addeditrefueling.event.InvalidFueledVolumeEvent;
 import be.ehb.digx.refuel.addeditrefueling.event.InvalidLiterPriceEvent;
 import be.ehb.digx.refuel.addeditrefueling.event.InvalidMileAgeEvent;
 import be.ehb.digx.refuel.addeditrefueling.event.InvalidVehicleIdEvent;
-import be.ehb.digx.refuel.addeditrefueling.view.model.Refueling;
+import be.ehb.digx.refuel.addeditrefueling.view.model.RefuelingUI;
 import be.ehb.digx.refuel.databinding.LayoutAddeditRefuelBinding;
 import be.ehb.digx.refuel.dialog.ProgressDialogFragment;
 import be.ehb.digx.refuel.login.LoginPresenter;
@@ -44,7 +43,7 @@ public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelC
 
     LayoutAddeditRefuelBinding layoutAddeditRefuelBinding;
     AddEditRefuelPresenter addEditRefuelPresenter;
-    Refueling refueling;
+    RefuelingUI refueling;
     ProgressDialogFragment progressDialogFragment;
 
     @Override
@@ -55,7 +54,7 @@ public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelC
         progressDialogFragment = new ProgressDialogFragment();
         progressDialogFragment.setContext(getActivity());
 
-        refueling = new Refueling();
+        refueling = new RefuelingUI();
         Intent intent = getActivity().getIntent();
         String vehicleId = intent.getStringExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID);
         String fuelType = intent.getStringExtra(RefuelApplicationConstants.EXTRAS_FUELTYPE);
@@ -208,7 +207,7 @@ public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelC
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        String date = String.valueOf(dayOfMonth)+"/"+String.valueOf(monthOfYear)+"/"+String.valueOf(year);
+                        String date = String.valueOf(dayOfMonth)+"/"+String.valueOf(monthOfYear+1)+"/"+String.valueOf(year);
                         layoutAddeditRefuelBinding.aevDate.setText(date);
                     }
                 }, year, month, day);

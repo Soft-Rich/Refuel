@@ -21,6 +21,7 @@ import be.ehb.digx.refuel.RefuelApplicationConstants;
 import be.ehb.digx.refuel.addeditrefueling.AddEditRefuelActivity;
 import be.ehb.digx.refuel.databinding.LayoutVehicleItemBinding;
 import be.ehb.digx.refuel.domain.model.Vehicle;
+import be.ehb.digx.refuel.refuelings.RefuelingsActivity;
 
 public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecyclerViewAdapter.VehicleViewHolder> {
 
@@ -51,17 +52,15 @@ public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecy
                     public boolean onMenuItemClick(final MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.add_refueling:
-                                /*Dialog dialog = new Dialog(context);
-                                dialog.setContentView(R.layout.layout_addedit_refuel);
-                                dialog.setTitle("Add Vehicle");
-                                dialog.show();*/
-                                Intent intent = new Intent(context, AddEditRefuelActivity.class);
-                                intent.putExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());
-                                intent.putExtra(RefuelApplicationConstants.EXTRAS_FUELTYPE, vehicles.get(position).getFuelType());
-                                context.startActivity(intent);
+                                Intent addRefuelingIntent = new Intent(context, AddEditRefuelActivity.class);
+                                addRefuelingIntent.putExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());
+                                addRefuelingIntent.putExtra(RefuelApplicationConstants.EXTRAS_FUELTYPE, vehicles.get(position).getFuelType());
+                                context.startActivity(addRefuelingIntent);
                                 return true;
                             case R.id.list_refueling:
-
+                                Intent refuelingListIntent = new Intent(context, RefuelingsActivity.class);
+                                refuelingListIntent.putExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());
+                                context.startActivity(refuelingListIntent);
                                 return true;
                             default:
                                 return false;
@@ -71,8 +70,6 @@ public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecy
                 popup.show();
             }
         });
-
-
     }
 
     @Override
@@ -81,11 +78,6 @@ public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecy
             return vehicles.size();
         }
         return 0;
-    }
-
-    private void showAddRefuelDialog(Vehicle vehicle){
-
-
     }
 
     public void setVehicles(List<Vehicle> vehicles) {

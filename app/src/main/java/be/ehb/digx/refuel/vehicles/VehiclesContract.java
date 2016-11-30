@@ -18,7 +18,7 @@ public interface VehiclesContract {
      * Handles actions for vehicles overview
      */
 
-    interface Presenter extends BasePresenter {
+     interface Presenter extends BasePresenter {
 
         void getVehicles();
 

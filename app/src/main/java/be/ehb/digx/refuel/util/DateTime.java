@@ -15,7 +15,19 @@ import java.util.Date;
 public class DateTime {
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
+    private static final String DATE_FORMAT_MONTH_YEAR = "MM/yyyy";
     private static final String TIME_FORMAT = "HH:mm";
+
+    public static long getMonthYearId(String monthYear){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_MONTH_YEAR);
+        Date parsedDate = null;
+        try {
+            parsedDate = dateFormat.parse(monthYear);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return parsedDate.getTime();
+    }
 
     public static Long getCurrentTimestamp() {
 
@@ -44,7 +56,14 @@ public class DateTime {
         return parsedDate.getTime();
     }
 
-    public static String getDate(Long timeStamp){
+    public static String getMothYear(long timeStamp){
+        Date date=new Date(timeStamp);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_MONTH_YEAR);
+        String dateText = dateFormat.format(date);
+        return dateText;
+    }
+
+    public static String getDate(long timeStamp){
         Date date=new Date(timeStamp);
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         String dateText = dateFormat.format(date);
@@ -52,7 +71,7 @@ public class DateTime {
 
     }
 
-    public static String getTime(Long timeStamp){
+    public static String getTime(long timeStamp){
         Date date=new Date(timeStamp);
         SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT);
         String timeText = dateFormat.format(date);

@@ -2,7 +2,7 @@ package be.ehb.digx.refuel.addeditrefueling;
 
 import be.ehb.digx.refuel.BasePresenter;
 import be.ehb.digx.refuel.BaseView;
-import be.ehb.digx.refuel.addeditrefueling.view.model.Refueling;
+import be.ehb.digx.refuel.addeditrefueling.view.model.RefuelingUI;
 import be.ehb.digx.refuel.login.LoginPresenter;
 
 /**
@@ -13,7 +13,7 @@ public interface AddEditRefuelContract {
 
     interface Presenter extends BasePresenter {
 
-        void addRefueling(Refueling refueling);
+        void addRefueling(RefuelingUI refueling);
 
     }
 

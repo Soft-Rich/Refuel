@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -16,15 +15,12 @@ import be.ehb.digx.refuel.R;
 import be.ehb.digx.refuel.domain.model.Vehicle;
 import be.ehb.digx.refuel.login.LoginPresenter;
 
-public class VehicleFragment extends Fragment implements VehiclesContract.View{
+public class VehicleFragment extends Fragment implements VehiclesContract.View {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     VehicleRecyclerViewAdapter vehicleRecyclerViewAdapter;
     VehiclesPresenter vehiclesPresenter;
-    ProgressBar progressBar;
-
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,16 +40,12 @@ public class VehicleFragment extends Fragment implements VehiclesContract.View{
         vehiclesPresenter = new VehiclesPresenter(this);
         vehiclesPresenter.getVehicles();
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.fv_recycleview_vehicles);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        recyclerView = (RecyclerView) view.findViewById(R.id.fv_recycleview_vehicles);
         recyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        // specify an adapter (see also next example)
         vehicleRecyclerViewAdapter = new VehicleRecyclerViewAdapter(this.getContext());
         recyclerView.setAdapter(vehicleRecyclerViewAdapter);
     }

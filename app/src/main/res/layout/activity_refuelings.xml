@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_refuelings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.ehb.digx.refuel.refuelings.RefuelingsActivity">
+
+    <fragment
+        android:id="@+id/fragment_refuelings"
+        android:name="be.ehb.digx.refuel.refuelings.RefuelingsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        tools:layout="@layout/layout_refuelings_list"/>
+
+</RelativeLayout>

@@ -4,7 +4,7 @@
     <data>
         <variable
             name="refueling"
-            type="be.ehb.digx.refuel.addeditrefueling.view.model.Refueling"/>
+            type="be.ehb.digx.refuel.addeditrefueling.view.model.RefuelingUI"/>
 
         <variable
             name="presenter"

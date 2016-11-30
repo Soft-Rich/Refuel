@@ -1,5 +1,6 @@
 package be.ehb.digx.refuel.addeditrefueling.view.model;
 
+import be.ehb.digx.refuel.BaseAdapter;
 import be.ehb.digx.refuel.domain.model.Refueling;
 import be.ehb.digx.refuel.util.DateTime;
 
@@ -7,11 +8,11 @@ import be.ehb.digx.refuel.util.DateTime;
  * Created by richsoft on 22/11/2016.
  */
 
-public class RefuelingAdapter {
+public class RefuelingAdapter implements BaseAdapter<RefuelingUI, Refueling> {
 
-    public static Refueling adaptFromUi(be.ehb.digx.refuel.addeditrefueling.view.model.Refueling uiRefueling){
+    public Refueling adaptFromUi(RefuelingUI uiRefueling){
         Refueling refueling = new Refueling();
-        refueling.setExternal(false);
+        refueling.setExternal(refueling.getExternal());
         refueling.setFuelType(uiRefueling.getFuelType());
         refueling.setVehicleId(uiRefueling.getVehicleId());
         refueling.setFueledVolume(Double.parseDouble(uiRefueling.getFueledVolume()));
@@ -21,14 +22,14 @@ public class RefuelingAdapter {
         return refueling;
     }
 
-    public static be.ehb.digx.refuel.addeditrefueling.view.model.Refueling adaptToUi(Refueling refueling){
-        be.ehb.digx.refuel.addeditrefueling.view.model.Refueling uiRefueling = new be.ehb.digx.refuel.addeditrefueling.view.model.Refueling();
-        uiRefueling.setExternal(false);
-        uiRefueling.setFuelType(uiRefueling.getFuelType());
-        uiRefueling.setVehicleId(uiRefueling.getVehicleId());
-        uiRefueling.setFueledVolume(String.valueOf(refueling.getFueledVolume()));
-        uiRefueling.setLiterPrice(String.valueOf(refueling.getLiterPrice()));
-        uiRefueling.setMileAge(String.valueOf(refueling.getMileAge()));
-        return uiRefueling;
+    public RefuelingUI adaptToUi(Refueling refueling){
+        RefuelingUI refuelingUI = new RefuelingUI();
+        refuelingUI.setExternal(refueling.getExternal());
+        refuelingUI.setFuelType(refueling.getFuelType());
+        refuelingUI.setVehicleId(refueling.getVehicleId());
+        refuelingUI.setFueledVolume(String.valueOf(refueling.getFueledVolume()));
+        refuelingUI.setLiterPrice(String.valueOf(refueling.getLiterPrice()));
+        refuelingUI.setMileAge(String.valueOf(refueling.getMileAge()));
+        return refuelingUI;
     }
 }

@@ -17,7 +17,7 @@ import de.greenrobot.event.EventBus;
  * Created by richsoft on 23/11/2016.
  */
 
-public class RefuelingValidator implements Validator<Refueling> {
+public class RefuelingValidator implements Validator<RefuelingUI> {
 
     static  Context context = RefuelApplication.getContext();
 
@@ -116,28 +116,28 @@ public class RefuelingValidator implements Validator<Refueling> {
     }
 
     @Override
-    public boolean validate(Refueling refueling) {
-        if (!externalIsValid(refueling.getExternal())){
+    public boolean validate(RefuelingUI refuelingUi) {
+        if (!externalIsValid(refuelingUi.getExternal())){
             return false;
         }
 
-        if (!vehicleIdIsValid(refueling.getVehicleId())){
+        if (!vehicleIdIsValid(refuelingUi.getVehicleId())){
             return false;
         }
 
-        if (!fueledVolumeIsValid(refueling.getFueledVolume())){
+        if (!fueledVolumeIsValid(refuelingUi.getFueledVolume())){
             return false;
         }
 
-        if (!fuelTypeIsValid(refueling.getFuelType())){
+        if (!fuelTypeIsValid(refuelingUi.getFuelType())){
             return false;
         }
 
-        if (!mileAgeIsValid(refueling.getMileAge())){
+        if (!mileAgeIsValid(refuelingUi.getMileAge())){
             return false;
         }
 
-        if (!literPriceIsValid(refueling.getLiterPrice())){
+        if (!literPriceIsValid(refuelingUi.getLiterPrice())){
             return false;
         }
 
