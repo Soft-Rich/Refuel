@@ -3,6 +3,7 @@ package be.ehb.digx.refuel.vehicles;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -19,6 +20,7 @@ import be.ehb.digx.refuel.BR;
 import be.ehb.digx.refuel.R;
 import be.ehb.digx.refuel.RefuelApplicationConstants;
 import be.ehb.digx.refuel.addeditrefueling.AddEditRefuelActivity;
+import be.ehb.digx.refuel.addeditrefueling.AddEditRefuelingFragment;
 import be.ehb.digx.refuel.databinding.LayoutVehicleItemBinding;
 import be.ehb.digx.refuel.domain.model.Vehicle;
 import be.ehb.digx.refuel.refuelings.RefuelingsActivity;
@@ -27,10 +29,15 @@ public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecy
 
     List<Vehicle> vehicles;
     Context context;
+    VehiclesActivity vehiclesActivity = null;
 
     public VehicleRecyclerViewAdapter(Context context) {
         this.context = context;
+        if (context instanceof  VehiclesActivity){
+            vehiclesActivity = (VehiclesActivity)context;
+        }
     }
+
 
     @Override
     public VehicleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -52,11 +59,25 @@ public class VehicleRecyclerViewAdapter extends RecyclerView.Adapter<VehicleRecy
                     public boolean onMenuItemClick(final MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.add_refueling:
-                                Intent addRefuelingIntent = new Intent(context, AddEditRefuelActivity.class);
-                                addRefuelingIntent.putExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());
-                                addRefuelingIntent.putExtra(RefuelApplicationConstants.EXTRAS_FUELTYPE, vehicles.get(position).getFuelType());
-                                context.startActivity(addRefuelingIntent);
-                                return true;
+                                if (vehiclesActivity.isTwoPane()) {
+                                    Bundle addRefuelingBundle = new Bundle();
+                                    addRefuelingBundle.putString(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());
+                                    addRefuelingBundle.putString(RefuelApplicationConstants.EXTRAS_FUELTYPE, vehicles.get(position).getFuelType());
+
+                                    AddEditRefuelingFragment addEditRefuelingFragment = new AddEditRefuelingFragment();
+                                    addEditRefuelingFragment.setArguments(addRefuelingBundle);
+                                    vehiclesActivity.getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.fragment_vehicles_add_edit_refueling_pane_two, addEditRefuelingFragment)
+                                            .commit();
+                                    return true;
+                                }else{
+                                    Intent addRefuelingIntent = new Intent(context, AddEditRefuelActivity.class);
+                                    addRefuelingIntent.putExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());
+                                    addRefuelingIntent.putExtra(RefuelApplicationConstants.EXTRAS_FUELTYPE, vehicles.get(position).getFuelType());
+                                    context.startActivity(addRefuelingIntent);
+                                    return true;
+                                }
+
                             case R.id.list_refueling:
                                 Intent refuelingListIntent = new Intent(context, RefuelingsActivity.class);
                                 refuelingListIntent.putExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID, vehicles.get(position).getCarId());

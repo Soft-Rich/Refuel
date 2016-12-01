@@ -10,14 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="be.ehb.digx.refuel.addeditrefueling.AddEditRefuelActivity">
 
-    <fragment
-        android:id="@+id/fragment_add_edit_refueling"
-        android:name="be.ehb.digx.refuel.addeditrefueling.AddEditRefuelingFragment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        tools:layout="@layout/layout_addedit_refuel" />
+        android:orientation="vertical"
+        android:id="@+id/fragment_add_edit_refueling"/>
 
 </RelativeLayout>

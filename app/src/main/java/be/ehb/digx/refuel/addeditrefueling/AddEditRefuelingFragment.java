@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,7 +37,7 @@ import de.greenrobot.event.EventBus;
  * A simple {@link Fragment} subclass.
  */
 public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelContract.View {
-    
+
     private static final String TAG = "AddEditRefuelingFrag";
 
     LayoutAddeditRefuelBinding layoutAddeditRefuelBinding;
@@ -55,9 +54,18 @@ public class AddEditRefuelingFragment extends Fragment implements AddEditRefuelC
         progressDialogFragment.setContext(getActivity());
 
         refueling = new RefuelingUI();
-        Intent intent = getActivity().getIntent();
-        String vehicleId = intent.getStringExtra(RefuelApplicationConstants.EXTRAS_VEHICLE_ID);
-        String fuelType = intent.getStringExtra(RefuelApplicationConstants.EXTRAS_FUELTYPE);
+
+        String vehicleId = null;
+        if (getArguments().containsKey(RefuelApplicationConstants.EXTRAS_VEHICLE_ID)) {
+            vehicleId = getArguments().getString(RefuelApplicationConstants.EXTRAS_VEHICLE_ID);
+        }
+
+        String fuelType = null;
+        if (getArguments().containsKey(RefuelApplicationConstants.EXTRAS_FUELTYPE)){
+            fuelType = getArguments().getString(RefuelApplicationConstants.EXTRAS_FUELTYPE);
+
+        }
+
         refueling.setVehicleId(vehicleId);
         refueling.setFuelType(fuelType);
         refueling.setTime(DateTime.getCurrentTime());

@@ -7,8 +7,8 @@
     android:name="be.ehb.digx.refuel.vehicles.VehicleFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="be.ehb.digx.refuel.vehicles.VehicleFragment"
     tools:listitem="@layout/layout_vehicle_item" />

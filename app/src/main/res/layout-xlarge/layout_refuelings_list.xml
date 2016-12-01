@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:name="be.ehb.digx.refuel.vehicles.RefuelingsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+        android:id="@+id/rfv_stickyheader_refuelings"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="be.ehb.digx.refuel.vehicles.VehicleFragment"
+        tools:listitem="@layout/layout_refueling_item" />
+
+    <LinearLayout
+        android:id="@+id/fragment_refuelings_add_edit_refueling_pane_two"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical" />
+</LinearLayout>

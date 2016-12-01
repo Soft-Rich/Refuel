@@ -34,11 +34,11 @@ public class RefuelingsStickyListAdapter  extends BaseAdapter implements StickyL
 
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
+        //if (convertView == null) {
             layoutRefuelingHeaderBinding = DataBindingUtil.inflate(inflater, R.layout.layout_refueling_header, parent, false);
             layoutRefuelingHeaderBinding.setRefuelingHeader(refuelingsUIList.get(position));
             convertView = layoutRefuelingHeaderBinding.getRoot();
-        }
+        //}
         return convertView;
     }
 
@@ -68,11 +68,11 @@ public class RefuelingsStickyListAdapter  extends BaseAdapter implements StickyL
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
-        if (convertView == null) {
+       // if (convertView == null) {
             layoutRefuelingItemBinding = DataBindingUtil.inflate(inflater, R.layout.layout_refueling_item, parent, false);
             layoutRefuelingItemBinding.setRefueling(refuelingsUIList.get(i));
             convertView = layoutRefuelingItemBinding.getRoot();
-        }
+        //}
         return convertView;
     }
 
